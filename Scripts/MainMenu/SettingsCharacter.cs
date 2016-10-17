@@ -159,7 +159,7 @@ public class SettingsCharacter : MonoBehaviour {
     }
     
     public void SendStatsInGlobalObj(string t) {
-
+        int selectedThrones = 0;
         switch(t) {
             case "Pontiff": // Эффект душ длится втрое
                 speed += 10;
@@ -167,17 +167,22 @@ public class SettingsCharacter : MonoBehaviour {
             case "Logos": // + 50 энергии и структуры
                 speed += 13;
                 _splendor += 10;
+                maxEnergyShield += 50;
+                maxStructure += 50;
                 break;
             case "Testament": // При передвижении скорость увеличивается до 20. При прекращении движения постепенно баф слетает до стартового значения. +15% защиты
                 speed += 5;
+                percentDefence += 15;
                 break;
             case "Messiah": // W/S телепортирует на короткое расстояние
                 speed += 3;
+                selectedThrones = 1;
                 break;
             case "Cornerstone": // W запоминает точку, S телепортирует в запомненую точку
                 speed += 6;
-                maxEnergyShield += 3;
+                regenerationEnergyShield += 3;
                 _splendor += 10;
+                selectedThrones = 2;
                 break;
             default:
                 break;
@@ -185,7 +190,7 @@ public class SettingsCharacter : MonoBehaviour {
 
         CalculateStats();
 
-        Global.Instance.PlayerStats(percentDamage, percentDefence, speed, maxEnergyShield, regenerationEnergyShield, maxStructure);
+        Global.Instance.PlayerStats(percentDamage, percentDefence, speed, maxEnergyShield, regenerationEnergyShield, maxStructure, selectedThrones);
     }
 
     private void CalculateStats() {

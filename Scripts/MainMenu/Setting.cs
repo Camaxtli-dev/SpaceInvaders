@@ -7,10 +7,11 @@ public class Setting : MonoBehaviour {
     public Dropdown language;
 
     void Start() {
-        language.onValueChanged.AddListener(delegate { selectLanguage(language); });
+        selectedLanguage(language);
+        language.onValueChanged.AddListener(delegate { selectedLanguage(language); });
     }
 
-    private void selectLanguage(Dropdown language) {
+    private void selectedLanguage(Dropdown language) {
         MainMenu.Instance.Language(language.captionText.text);
     }
 }

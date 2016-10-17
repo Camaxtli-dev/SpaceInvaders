@@ -28,6 +28,7 @@ public class LevelMaster : Singleton<LevelMaster> {
         user.maxEnergyShield += Global.Instance._maxEnergyShield;
         user.maxStructure += Global.Instance._maxStructure;
         user.regenerationEnergyShield += Global.Instance._regenerationEnergyShield;
+        user.selectedThrones = Global.Instance._thrones;
         user.UpdateStat();
     }
 }
